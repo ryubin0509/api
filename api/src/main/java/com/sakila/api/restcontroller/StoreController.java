@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,18 @@ public class StoreController {
 		this.storeService = storeService;
 	}
 	
+	
+	// 삭제 
+	@DeleteMapping("/store/{storeId}")
+	public ResponseEntity<String> deleteCustomer(@PathVariable int storeId) {
+		
+		boolean result = storeService.delete(storeId);
+		if(result) {
+			return new ResponseEntity<String>("삭제 성공", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+	
+	}
 	
 	
 	

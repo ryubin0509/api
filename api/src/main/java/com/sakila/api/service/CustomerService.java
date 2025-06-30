@@ -30,6 +30,17 @@ public class CustomerService {
 	}
 	
 	
+	// 삭제
+	public boolean delete(int customerId) {
+		if(customerRepository.existsById(customerId)) {
+			customerRepository.deleteById(customerId);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
 	// 수정
 	public void update(CustomerDto customerDto) {
 		

@@ -20,7 +20,19 @@ public class StoreService {
 	public StoreService(StoreRepository storeRepository, AddressRepository addressRepository) {
 		this.storeRepository = storeRepository;
 		this.addressRepository = addressRepository;
+	
 	}
+	
+	
+	// 삭제
+	public boolean delete(int storeId) {
+		if(storeRepository.existsById(storeId)) {
+			storeRepository.deleteById(storeId);
+			return true;
+		}
+		return false;
+	}
+	
 	
 	
 	public void update(StoreDto storeDto) {
